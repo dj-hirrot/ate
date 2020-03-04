@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Ate</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <%= render 'layouts/header' %>
+  <% if notice %><div class="alert alert-success text-center mb-0"><%= notice %></div><% end %>
+  <% if alert %><div class="alert alert-warning text-center mb-0"><%= alert %></div><% end %>
+  <main class="mt-4">
+    <%= yield %>
+  </main>
+</body>
+
+</html>
