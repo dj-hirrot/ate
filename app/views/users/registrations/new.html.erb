@@ -29,7 +29,7 @@
         class: "form-control #{'is-invalid' if resource.errors.messages[:password_confirmation].any?}",
         autocomplete: "new-password" %>
       <% resource.errors.messages[:password_confirmation].each do |error| %>
-      <div class="invalid-feedback"><%= "確認用パスワード#{error}" %></div>
+        <div class="invalid-feedback"><%= "確認用パスワード#{error}" %></div>
       <% end %>
     </div>
 
@@ -37,4 +37,11 @@
       <%= f.submit "Sign up", class: 'btn btn-dark' %>
     </div>
   <% end %>
+</div>
+
+<hr>
+
+<div class="container">
+  <%= link_to 'パスワードを忘れた場合', new_user_password_path %><br>
+  <%= link_to '確認メールが届かない場合', new_user_confirmation_path %>
 </div>

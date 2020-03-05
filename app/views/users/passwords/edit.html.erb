@@ -1,25 +1,31 @@
-<h2>Change your password</h2>
+<div class="container">
+  <h2>パスワードを再設定してください</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :password, "新しいパスワード" %>
+      <%= f.password_field :password,
+        class: "form-control #{'is-invalid' if resource.errors.messages[:password].any?}",
+        autocomplete: "new-password" %>
+      <% resource.errors.messages[:password].each do |error| %>
+        <div class="invalid-feedback"><%= "パスワード#{error}" %></div>
+      <% end %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation,
+        class: "form-control #{'is-invalid' if resource.errors.messages[:password_confirmation].any?}",
+        autocomplete: "new-password" %>
+      <% resource.errors.messages[:password_confirmation].each do |error| %>
+        <div class="invalid-feedback"><%= "確認用パスワード#{error}" %></div>
+      <% end %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+    <div class="actions">
+      <%= f.submit "パスワードを変更する", class: 'btn btn-dark' %>
+    </div>
+  <% end %>
+</div>
