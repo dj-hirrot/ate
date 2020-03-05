@@ -9,7 +9,7 @@
         autofocus: true,
         autocomplete: "email" %>
       <% resource.errors.messages[:email].each do |error| %>
-        <div class="invalid-feedback"><%= error %></div>
+        <div class="invalid-feedback"><%= "メールアドレス#{error}" %></div>
       <% end %>
     </div>
 
@@ -19,7 +19,7 @@
         class: "form-control #{'is-invalid' if resource.errors.messages[:password].any?}",
         autocomplete: "new-password" %>
       <% resource.errors.messages[:password].each do |error| %>
-        <div class="invalid-feedback"><%= error %></div>
+        <div class="invalid-feedback"><%= "パスワード#{error}" %></div>
       <% end %>
     </div>
 
@@ -29,7 +29,7 @@
         class: "form-control #{'is-invalid' if resource.errors.messages[:password_confirmation].any?}",
         autocomplete: "new-password" %>
       <% resource.errors.messages[:password_confirmation].each do |error| %>
-        <div class="invalid-feedback"><%= error %></div>
+      <div class="invalid-feedback"><%= "確認用パスワード#{error}" %></div>
       <% end %>
     </div>
 
