@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
+  resources :categories, only: [:show]
   root to: 'static_pages#top'
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
