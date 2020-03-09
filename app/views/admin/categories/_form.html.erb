@@ -1,0 +1,17 @@
+<%= form_for(category, url: url) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control #{'is-invalid' if @category.errors[:name].any?}" %>
+    <% @category.errors[:name].each do |error| %>
+      <div class="invalid-feedback">
+        <%= "カテゴリ名#{error}" %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= f.submit btn, class: 'btn btn-dark' %>
+<% end %>
+
+<hr>
+
+<%= link_to 'BACK', admin_categories_path, class: 'btn btn-dark' %>

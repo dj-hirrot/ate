@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :categories, only: [:index]
+    root to: 'home#index'
+    resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
   devise_for :users, controllers: {
