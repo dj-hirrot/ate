@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
     <%= link_to 'ATE', root_path, class: 'navbar-brand' %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false">
       <span class="navbar-toggler-icon"></span>
@@ -7,17 +7,17 @@
 
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" id="categoriesNav" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            CATEGORIES
-          </a>
-          <div class="dropdown-menu" aria-labelledby="categoriesNav">
-            <% @categories.each do |category| %>
-              <%= link_to category.name, category_path(category), class: 'dropdown-item' %>
-            <% end %>
-          </div>
-        </li>
         <% if signed_in? %>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="categoriesNav" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              CATEGORIES
+            </a>
+            <div class="dropdown-menu" aria-labelledby="categoriesNav">
+              <% @categories.each do |category| %>
+                <%= link_to category.name, category_path(category), class: 'dropdown-item' %>
+              <% end %>
+            </div>
+          </li>
           <li class="nav-item">
             <%= link_to 'SING OUT', destroy_user_session_path, class: 'nav-link', method: :delete %>
           </li>
